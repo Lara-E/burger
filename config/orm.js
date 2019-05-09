@@ -7,9 +7,9 @@ var orm = {
             cb(res);
         });
     },
-    insertOne: function(burgerName, cb) {
+    insertOne: function(burger_name, cb) {
         var queryString = "INSERT INTO burgers (burger_name) VALUES (?)";
-        connection.query(queryString, burgerName, function(err, res) {
+        connection.query(queryString, burger_name, function(err, res) {
             if (err) throw err;
             cb(res)
         });
