@@ -5,7 +5,6 @@ var router = express.Router();
 var burger = require("../models/burger.js");
 
 router.get("/", function (req, res) {
-    // console.log(res)
     burger.selectAll(function (data) {
         var hbsObject = {
             burgers: data
@@ -20,7 +19,7 @@ router.post("/api/burgers", function (req, res) {
     });
 });
 
-router.put("/api/burgers/:id", function (req, res) {
+router.post("/api/burgers/:id", function (req, res) {
     burger.updateOne(req.params.id, function (result) {
         res.redirect("/")
     });

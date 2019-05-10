@@ -1,9 +1,44 @@
-
-
-<ul>
-  {{#each burgers}}
-    {{#unless devoured}}
-      {{id}}. {{burger_name}}
-    {{/unless}}
-  {{/each}}
-</ul>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <img src="/assets/img/burger.png" alt="burger">
+            <h1>Eat-Da-Burger</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-6">
+            <form class="create-form" action="/api/burgers" method="POST">
+                <div class="form-group">
+                    <label for="burger">Add a Burger You'd Like to Eat</label>
+                    <input type="text" id="burger" name="burger_name">
+                    <button type="submit">Add Burger</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-6">
+            <ul>
+                {{#each burgers}}
+                {{#unless devoured}}
+                <form action="/api/burgers/{{id}}" method="POST">
+                    {{id}}. {{burger_name}}
+                    <button type="submit">Devour It!</button>
+                </form>
+                <br>
+                {{/unless}}
+                {{/each}}
+            </ul>
+        </div>
+        <div class="col-lg-6">
+            <ul>
+                {{#each burgers}}
+                {{#if devoured}}
+                {{id}}. {{burger_name}}
+                <br>
+                {{/if}}
+                {{/each}}
+            </ul>
+        </div>
+    </div>
+</div>
